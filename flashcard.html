@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Flashcards</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="flashcards.js" defer></script>
+    </head>
+    <body>
+        <header>
+            <h1>Mis Flashcards</h1>
+        </header>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="apuntes.html">Apuntes</a>
+            <a href="flashcard.html">Flashcards</a>
+        </nav>
+        <section id="flashcards">
+            <div  class="flashcards-controls">
+                <input type="text" id="folderName" placeholder="Nombre de la carpeta">
+                <div class="button-row">
+                    <button onclick="createFolder()">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" id="Folder-Add--Streamline-Core" height="14" width="14">
+                            <desc>
+                                Folder Add Streamline Icon: https://streamlinehq.com
+                            </desc>
+                            <g id="folder-add--add-folder-plus">
+                                <path id="Subtract" fill="#fefcff" fill-rule="evenodd" d="M5.183 0.5a1.5 1.5 0 0 1 1.492 1.14l0.215 0.86h5.61A1.5 1.5 0 0 1 14 4v8a1.5 1.5 0 0 1 -1.5 1.5h-11A1.5 1.5 0 0 1 0 12V2A1.5 1.5 0 0 1 1.5 0.5h3.683ZM7 4.75a0.75 0.75 0 0 1 0.75 0.75v1.75H9.5a0.75 0.75 0 0 1 0 1.5H7.75v1.75a0.75 0.75 0 0 1 -1.5 0V8.75H4.5a0.75 0.75 0 0 1 0 -1.5h1.75V5.5A0.75 0.75 0 0 1 7 4.75Z" clip-rule="evenodd" stroke-width="1"></path>
+                            </g>
+                        </svg>
+                    </button>
+                    <button onclick="openFolderManager()">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" id="Pencil--Streamline-Core" height="14" width="14">
+                        <desc>
+                            Pencil Streamline Icon: https://streamlinehq.com
+                        </desc>
+                        <g id="pencil--change-edit-modify-pencil-write-writing">
+                            <path id="Union" fill="#fefcff" d="M10.715 -0.000976562c-0.1998 0 -0.3976 0.039922962 -0.5818 0.117424562 -0.18301 0.07702 -0.34892 0.18961 -0.48808 0.331228L1.40732 8.64549c-0.06116 0.06086 -0.10553 0.13651 -0.12879 0.21959L0.0185299 13.3651c-0.0487051 0.1739 0.0001992 0.3606 0.1279281 0.4884 0.12773 0.1277 0.314422 0.1766 0.488369 0.1279l4.500003 -1.26c0.08308 -0.0233 0.15873 -0.0677 0.21959 -0.1288l8.19768 -8.2377 0.0014 -0.00135c0.1399 -0.13917 0.251 -0.30459 0.3269 -0.48679 0.0762 -0.18278 0.1154 -0.37884 0.1154 -0.57686 0 -0.19802 -0.0392 -0.39408 -0.1154 -0.57687 -0.0759 -0.1822 -0.187 -0.34763 -0.3269 -0.48679l-0.0014 -0.00134L11.7859 0.448721c-0.1393 -0.14211 -0.3056 -0.255064 -0.4891 -0.332273 -0.1842 -0.0775016 -0.382 -0.117424562 -0.5818 -0.117424562Z" stroke-width="1"></path>
+                        </g>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+                <div id="folders"></div>
+                <script src="script.js"></script>
+        </section>
+
+        <!-- 🔹 Ventana modal para ver tarjetas de una carpeta -->
+        <div id="flashcardFolderModal" class="flashcard-modal">
+            <div class="flashcard-container">
+                <button class="close-btn" onclick="closeFolderCards()">✖</button>
+                <h2 id="modalFolderTitle"></h2>
+                <div id="modalCardList"></div>
+            </div>
+        </div>
+    </body>
+</html>

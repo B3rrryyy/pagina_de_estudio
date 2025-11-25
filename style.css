@@ -1,0 +1,842 @@
+@font-face {
+    font-family: 'MiFuente';
+    src: url('fuente/KGPerfectPenmanship.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'MiFuente', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('fondo.jpg');
+    background-size: cover;       /* La imagen cubre toda la pantalla */
+    background-position: center;  /* Centrada */
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    color: #333;
+}
+
+header {
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+nav {
+    background: #f9D0CE;
+    margin: 20px auto 0 auto;
+    margin-bottom: 25px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    border-radius: 15px;
+    width: 60%;
+}
+nav a {
+    color: #f297A0;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+}
+h1 {
+    font-size: 80px;      /* tamaño */
+    color: #f297A0;
+    text-align: center;   /* alineación */
+    font-weight: bold;    /* grosor */
+    font-family: 'MiFuente', Arial;   /* fuente */
+    margin-bottom: 10px;  /* separación */
+}
+h2 {
+    font-size: 28px;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'MiFuente', Arial;
+    margin-bottom: 15px;
+}
+
+
+/* --------------------------------------BOTONES----------------------------------- */
+button {
+    background-color: #B6BB79;
+    font-family: 'MiFuente', sans-serif;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin: 10px ;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+    margin: 5px;
+    width: 60px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button:hover {
+    background-color: #8d915a;
+}
+
+/* -----------------------------LAYOUT PRINCIPAL------------------------------------------ */
+.main-sections {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px ;
+}
+
+/* Columna izquierda: To-Do + Calendario + Pomodoro */
+.productivity-tools {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 40%;
+    gap: 20px;
+}
+
+/* Columna derecha: Flashcards + Apuntes */
+.calendardiv{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 60%;
+    gap: 20px;
+}
+
+/*------------------------------TO DO-----------------------------------*/
+#todoList {
+    background-color: #f9D0CE;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 400px;
+    margin: 0 auto;
+}
+#todoList h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #f297A0 ;
+    font-size: 30px;
+}
+#todoList button {
+    width: auto;
+    padding: 12px 16px;
+    font-size: 14px;
+    background-color: #B6BB79;
+}
+#todoList button:hover {
+    background-color: #8d915a; 
+}
+li {
+    list-style: none;
+    background:#F3EBD8;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+/*---------------------------------INPUT------------------------------------------ */
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px 15px;
+    margin: 5px 0;
+    border: 2px solid #f297A0;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'MiFuente', sans-serif;
+    outline: none;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    background-color: #ebe0c8;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    border-color: #cd8088;
+    padding: 15px 20px;
+
+}
+
+input[type="text"]::placeholder,
+textarea::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+/*---------------------------------------------------------------------------*/
+#flashcards {
+    background-color: #f9D0CE;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 700px;
+    height: 500px;
+    margin: 30px auto;
+    display: block;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: flex-start;
+}
+/* Controles arriba */
+.flashcard-controls {
+    display: flex;
+    flex-direction: column;  /* input abajo del título */
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+
+.flashcard-controls input {
+    width: 300px;
+}
+.button-row {
+    display: flex;
+    flex-direction: row;     /* botones en fila */
+    gap: 12px;
+}
+
+#folders {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+    width: 100%;
+    padding: 10px 0;
+}
+.folder {
+    background: #F3EBD8;
+    padding: 10px;
+    margin: 10px ;
+    border-radius: 14px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+    width: 200px ;
+    height: 100px;           
+    aspect-ratio: 1/1; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    
+}
+.folder:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+.flashcard-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(5px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.flashcard-container {
+    background: #fff;
+    padding: 50px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    width: 80%;
+    max-width: 90%;
+    height: 70%;
+    max-height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    position: relative;
+}
+
+.flashcard-inner {
+    width: 400px;
+    height: 300px;
+    perspective: 1000px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+}
+
+.flashcard-inner.flipped {
+    transform: rotateY(180deg);
+}
+
+.flashcard-inner .front,
+.flashcard-inner .back {
+    width: 90%;
+    height: 70%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4em;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.flashcard-inner .front {
+    background-color: #dc94b0;
+    color: white;
+}
+
+.flashcard-inner .back {
+    background-color: #8e65ab;
+    color: #333;
+    transform: rotateY(180deg);
+}
+/*--------------------------------------------------*/
+.flashcard-buttons button {
+    font-family: 'MiFuente', sans-serif;
+    padding: 28px 56px;       
+    font-size: 18px;         
+    font-weight: bold;
+    background-color: #B6BB79;     
+    color: white;
+    border: none;
+    border-radius: 10px;   
+    cursor: pointer;
+    transition: all 0.25s ease;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.flashcard-buttons button:hover {
+    background: #8d915a;
+    transform: scale(1.05);   
+}
+
+/*--------------------------------------------------*/
+#modalCardList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 10px;
+}
+
+#modalCardList .card {
+    background: #f3ddeb;
+    width: auto ;
+    margin: 0 ;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+}
+
+#modalCardList .card button {
+    background: #B6BB79;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+#modalCardList .card button:hover {
+    background: #8d915a;
+}
+.card-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/*--------------------------------------------------*/
+.folder h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    text-align: center;
+    color: #f297A0;
+    font-weight: bold;
+    line-height: 1.2;
+}
+.folder-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    width: 100%;
+    font-size: 30px;
+}
+
+.folder-buttons button {
+    background: #B6BB79;
+    color: white;
+    border: none;
+    padding: 8px 5px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.folder-buttons button:hover {
+    background: #93985c;
+}
+.folder-buttons button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+.folder-buttons button::first-letter {
+    font-size: 1rem;
+}
+
+/*--------------------------CARPETAS FLASHCARD----------------------------------------*/
+#folderModal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+}
+
+#folderModal .modal-content {
+    background-image: url('fondo.jpg');
+    background-size: cover;       /* La imagen cubre toda la pantalla */
+    background-position: center;  /* Centrada */
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    text-align: center;
+}
+
+#folderModal .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #ff4b4b;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    font-size: 18px;
+}
+#folderModal .close-btn:hover {
+    background: #f297A0;
+}
+
+#folderCardsContainer .card {
+    background: #ebe0c8;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+#flashcardFolderModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#flashcardFolderModal .flashcard-container {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+    text-align: center;
+}
+
+/*------------------------------------------------------------------------*/
+#apuntes {
+    background-color: #f9D0CE;
+    padding: 30px; 
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    width: 600px; 
+    min-height: 750px; 
+    margin: 30px auto;
+    font-size: 18px; 
+}
+#apuntes h2{
+    color:#f297A0;
+}
+
+#apuntes .form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#apuntes textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Contenedor de apuntes */
+#notesList {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)) !important;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+
+/* Cada apunte individual */
+/* Cada apunte individual con estilo de carpeta */
+.note {
+    background: #ebe0c8; 
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+    padding: 15px 20px;
+    margin: 10px 0;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+/* Efecto al pasar el mouse */
+.note:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+.note-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.note-buttons {
+
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+
+/* Título del apunte */
+.note h3 {
+    margin: 0 0 8px 0;
+    color: #f297A0;
+}
+
+/* Materia */
+.note strong {
+    color: #ffffff;
+}
+
+/* Botones */
+.note button {
+    background-color: #B6BB79;
+    font-family: 'MiFuente', sans-serif;
+    border: none;
+    border-radius: 6px;
+    margin-right: 8px;
+    padding: 6px 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.note button:hover {
+    background-color: #8d915a;
+}
+/*-----------------------MODAL---------------------*/
+/* === Modal de Apuntes === */
+.flashcard-modal {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+/* Contenedor del modal */
+.note-modal-container {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    text-align: left;
+}
+
+/* Botón cerrar modal */
+.close-btn {
+    float: right;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Estilo del contenido del apunte */
+#modalNoteTitle {
+    margin-top: 0;
+    color: #333;
+}
+
+#modalNoteSubject {
+    color: #555;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#modalNoteContent {
+    color: #444;
+    line-height: 1.5;
+    white-space: pre-line;
+}
+
+/* ----------------------------------------------------------------------- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #ae656f;
+    padding: 25px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* ------------------------------------------------------------------------ */
+#calendar{
+    background-color: #f9D0CE;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 500px;
+    margin: 0 auto;
+}
+#calendar h2{
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #f297A0 ;
+    font-size: 30px;
+}
+.fc-toolbar-chunk {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 8px; /* separa los botones */
+}
+/* Botones generales del calendario */
+.fc-button {
+    background-color: #B6BB79 !important; 
+    color: white !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 8px 14px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-direction: row !important;
+}
+
+
+/* Al pasar el mouse */
+.fc-button:hover {
+    background: #93985c ;   /* Fresa jugosa */
+}
+
+/* Botón activo (día, mes seleccionado) */
+.fc-button.fc-button-active {
+    background: #602328;   /* Fresa madura */
+    color: white ;
+}
+.fc-col-header-cell-cushion {
+    color: white !important;
+}
+
+/* Números del calendario en blanco */
+.fc-daygrid-day-number {
+    color: white !important;
+    font-weight: bold;
+}
+
+.calendar-container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    width: 70%;        /* Aumentado */
+    max-width: 900px;  /* Máximo más grande */
+    height: 70%;       /* Aumentado */
+    max-height: 700px; /* Máximo más grande */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+    overflow-y: auto;  /* Para scroll si hay muchos eventos */
+}
+
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff4b4b;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.close-btn:hover {
+    background: #cc0000;
+}
+
+.addEventModal .modal-content {
+    width: 70;
+    height: auto;   
+}
+/* -------------------------------------------------------------------*/
+#pomodoro {
+    background-color: #f9D0CE;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 400px;
+    margin: 0 auto;
+}
+#pomodoro h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #f297A0 ;
+    font-size: 30px;
+}
+.pomodoro-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    flex-direction: row;
+    
+}
+.pomodoro-buttons button {
+    background: #B6BB79;
+    padding: 20px 35px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+}
+
+.pomodoro-buttons button:hover {
+    background: #b96a8a;
+
+}
+.pomodoro-buttons button svg {
+    width: 28px !important;
+    height: 28spx !important;
+    flex-shrink: 0 !important;
+}
+
+
+
+.pomodoro-buttons button svg path {
+    fill: #fff !important; /* asegura que el icono sea blanco */
+}
+#timer {
+    font-size: 3em;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+/*------------------------------------------------------------------------*/
+@media (max-width: 900px) {
+    .main-layout {
+        flex-direction: column;
+    }
+    .left-column, .right-column {
+        width: 100%;
+    }
+}
