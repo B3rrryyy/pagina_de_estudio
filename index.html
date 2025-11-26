@@ -21,6 +21,82 @@
         </nav>
         
         <div class="main-sections">
+            <div class="calendardiv">
+                <section id="calendar">
+                    <h2>Mi Calendario</h2>
+                    <div id="calendar-container"></div>
+                    <!-- MODAL: Eventos del día -->
+                    <div id="dayEventsModal" class="flashcard-modal">
+                        <div class="calendar-container">
+                            <button class="close-btn" onclick="closeDayEventsModal()">✖</button>
+                            <h3 id="dayEventsTitle"></h3>
+                            <ul id="dayEventsList"></ul>
+                            <button onclick="openAddEventModal()">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" id="Add-1--Streamline-Core" height="14" width="14">
+                                <desc>
+                                    Add 1 Streamline Icon: https://streamlinehq.com
+                                </desc>
+                                <g id="add-1--expand-cross-buttons-button-more-remove-plus-add-+-mathematics-math">
+                                    <path id="Union" fill="#000000" fill-rule="evenodd" d="M8 1c0 -0.552285 -0.44772 -1 -1 -1S6 0.447715 6 1v5H1c-0.552285 0 -1 0.44772 -1 1s0.447715 1 1 1h5v5c0 0.5523 0.44772 1 1 1s1 -0.4477 1 -1V8h5c0.5523 0 1 -0.44772 1 -1s-0.4477 -1 -1 -1H8V1Z" clip-rule="evenodd" stroke-width="1"></path>
+                                </g>
+                                </svg> 
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- MODAL: Agregar evento -->
+                    <div id="addEventModal" class="flashcard-modal">
+                        <div class="calendar-container">
+                            <button class="close-btn" onclick="closeAddEventModal()">✖</button>
+                            <h3>Nuevo evento</h3>
+
+                            <label>Fecha:</label>
+                            <input type="date" id="eventDate">
+
+                            <label>Hora:</label>
+                            <input type="time" id="eventTime">
+
+                            <label>Descripción:</label>
+                            <textarea id="eventDesc"></textarea>
+
+                            <label>
+                                <input type="checkbox" id="eventReminder"> Recordatorio
+                            </label>
+
+                            <select id="eventReminderTime" style="display:none;">
+                                <option value="5">5 minutos antes</option>
+                                <option value="10">10 minutos antes</option>
+                                <option value="30">30 minutos antes</option>
+                                <option value="60">1 hora antes</option>
+                            </select>
+
+                            <button onclick="saveEvent()">Guardar</button>
+                        </div>
+                    </div>
+
+                    <div id="calendarModal" class="flashcard-modal">
+                        <div class="calendar-container">
+                            <button class="close-btn" onclick="closeCalendarModal()">✖</button>
+                            <h3 id="modalDate"></h3>
+                            <ul id="eventList"></ul>
+                            <input type="text" id="newEvent" placeholder="Nuevo evento...">
+                            <button onclick="addEventToDate()">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" id="Add-1--Streamline-Core" height="14" width="14">
+                                <desc>
+                                    Add 1 Streamline Icon: https://streamlinehq.com
+                                </desc>
+                                <g id="add-1--expand-cross-buttons-button-more-remove-plus-add-+-mathematics-math">
+                                    <path id="Union" fill="#fefcff" fill-rule="evenodd" d="M8 1c0 -0.552285 -0.44772 -1 -1 -1S6 0.447715 6 1v5H1c-0.552285 0 -1 0.44772 -1 1s0.447715 1 1 1h5v5c0 0.5523 0.44772 1 1 1s1 -0.4477 1 -1V8h5c0.5523 0 1 -0.44772 1 -1s-0.4477 -1 -1 -1H8V1Z" clip-rule="evenodd" stroke-width="1"></path>
+                                </g>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <script src="calendar.js"></script>
+                </section>
+                
+            </div>
+            
             <div class="productivity-tools">
                 <section id="pomodoro">
                     <h2>Pomodoro</h2>
@@ -80,66 +156,6 @@
 
                 
             </div>
-            
-            <div class="calendardiv">
-                <section id="calendar">
-                    <h2>Mi Calendario</h2>
-                    <div id="calendar-container"></div>
-                    <!-- MODAL: Eventos del día -->
-                    <div id="dayEventsModal" class="flashcard-modal">
-                        <div class="calendar-container">
-                            <button class="close-btn" onclick="closeDayEventsModal()">✖</button>
-                            <h3 id="dayEventsTitle"></h3>
-                            <ul id="dayEventsList"></ul>
-                            <button onclick="openAddEventModal()">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" id="Add-1--Streamline-Core" height="14" width="14">
-                                <desc>
-                                    Add 1 Streamline Icon: https://streamlinehq.com
-                                </desc>
-                                <g id="add-1--expand-cross-buttons-button-more-remove-plus-add-+-mathematics-math">
-                                    <path id="Union" fill="#000000" fill-rule="evenodd" d="M8 1c0 -0.552285 -0.44772 -1 -1 -1S6 0.447715 6 1v5H1c-0.552285 0 -1 0.44772 -1 1s0.447715 1 1 1h5v5c0 0.5523 0.44772 1 1 1s1 -0.4477 1 -1V8h5c0.5523 0 1 -0.44772 1 -1s-0.4477 -1 -1 -1H8V1Z" clip-rule="evenodd" stroke-width="1"></path>
-                                </g>
-                                </svg> 
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- MODAL: Agregar evento -->
-                    <div id="addEventModal" class="flashcard-modal">
-                        <div class="calendar-container">
-                            <button class="close-btn" onclick="closeAddEventModal()">✖</button>
-                            <h3>Nuevo evento</h3>
-
-                            <label>Fecha:</label>
-                            <input type="date" id="eventDate">
-
-                            <label>Hora:</label>
-                            <input type="time" id="eventTime">
-
-                            <label>Descripción:</label>
-                            <textarea id="eventDesc"></textarea>
-
-                            <label>
-                                <input type="checkbox" id="eventReminder"> Recordatorio
-                            </label>
-
-                            <select id="eventReminderTime" style="display:none;">
-                                <option value="5">5 minutos antes</option>
-                                <option value="10">10 minutos antes</option>
-                                <option value="30">30 minutos antes</option>
-                                <option value="60">1 hora antes</option>
-                            </select>
-
-                            <button onclick="saveEvent()">Guardar</button>
-                        </div>
-                    </div>
-
-                    <script src="calendar.js"></script>
-                </section>
-                
-            </div>
-            
-                
         </div>
 
 
@@ -154,28 +170,5 @@
             </div>
         </div>
     </div>
-
-
-    <div id="calendarModal" class="flashcard-modal">
-        <div class="calendar-container">
-            <button class="close-btn" onclick="closeCalendarModal()">✖</button>
-            <h3 id="modalDate"></h3>
-            <ul id="eventList"></ul>
-            <input type="text" id="newEvent" placeholder="Nuevo evento...">
-            <button onclick="addEventToDate()">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" id="Add-1--Streamline-Core" height="14" width="14">
-                <desc>
-                    Add 1 Streamline Icon: https://streamlinehq.com
-                </desc>
-                <g id="add-1--expand-cross-buttons-button-more-remove-plus-add-+-mathematics-math">
-                    <path id="Union" fill="#fefcff" fill-rule="evenodd" d="M8 1c0 -0.552285 -0.44772 -1 -1 -1S6 0.447715 6 1v5H1c-0.552285 0 -1 0.44772 -1 1s0.447715 1 1 1h5v5c0 0.5523 0.44772 1 1 1s1 -0.4477 1 -1V8h5c0.5523 0 1 -0.44772 1 -1s-0.4477 -1 -1 -1H8V1Z" clip-rule="evenodd" stroke-width="1"></path>
-                </g>
-                </svg>
-            </button>
-        </div>
-    </div>
-
-
-
     </body>
 </html>
