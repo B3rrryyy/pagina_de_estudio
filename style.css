@@ -549,12 +549,9 @@ li {
     flex-direction: column;
     gap: 18px;
 }
-/* ============================================================
-   MODAL GENERAL PARA FLASHCARDS (ver carpetas / estudiar)
-   Estilo premium igual al modal de agregar evento y editar apunte
-   ============================================================ */
+/* MODAL GENERAL PARA FLASHCARDS (ver carpetas / estudiar)Estilo premium igual al modal de agregar evento y editar apunte */
 .modal-flashcards {
-    display: none;
+    display: flex;
     position: fixed;
     top: 0; left: 0;
     width: 100%;
@@ -569,9 +566,12 @@ li {
 /* Caja interna */
 .modal-flashcards .modal-box {
     background: #F3EBD8;
-    width: 92%;
-    max-width: 780px;
-    max-height: 85vh;
+    width: 70%;
+    max-width: 1100px;
+    height: 65%;
+    max-height: 9000px;
+    align-items: center;
+    justify-content: center;
     padding: 30px;
     border-radius: 16px;
     box-shadow: 0 8px 28px rgba(0,0,0,0.25);
@@ -652,9 +652,9 @@ li {
    MODO ESTUDIO — flashcard con estilo premium
    ============================================================ */
 .flashcard-inner {
-    width: 380px;
-    height: 260px;
-    background: #fff;
+    width: 450px;
+    height: 320px;
+    background: #ebe0c8;
     border-radius: 14px;
     box-shadow: 0 6px 18px rgba(0,0,0,0.25);
     perspective: 1000px;
@@ -683,18 +683,20 @@ li {
 }
 
 .flashcard-inner .front {
-    background: #dc94b0;
-    color: white;
+
+    background: #f3ddeb;
+    color: #7a5c58;
+    font-size: 50px;
 }
 
 .flashcard-inner .back {
-    background: #8e65ab;
+    background: #f297A0;
     color: white;
+    font-size: 50px;
     transform: rotateY(180deg);
 }
 
-/* ------------------------------Botones del modo estudio
-   ============================================================ */
+/* ------------------------------Botones del modo estudio---------------- */
 .study-buttons {
     display: flex;
     flex-direction: row;
@@ -702,7 +704,9 @@ li {
 }
 
 .study-buttons button {
-    padding: 15px 35px;
+    height: auto;
+    width: auto;
+    padding: 15px 25px;
     border-radius: 12px;
     background: #B6BB79;
     border: none;
@@ -716,14 +720,17 @@ li {
     background: #8d915a;
     transform: scale(1.05);
 }
-
-.finish-btn {
-    background: #ff6b6b !important;
+button svg {
+    width: 24px;
+    height: 24px;
+    pointer-events: none; /* evita que bloquee clics */
 }
 
-.finish-btn:hover {
-    background: #d94343 !important;
+.study-buttons button svg path {
+    fill: white !important;
 }
+
+
 
 /*------------------------------------------------------------------------*/
 #apuntes {
