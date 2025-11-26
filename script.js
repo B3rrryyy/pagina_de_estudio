@@ -136,6 +136,28 @@ function openFolderCards(folderName) {
 
     modal.style.display = "flex";
 }
+function closeStudyModal() {
+    document.getElementById("flashcardStudyModal").style.display = "none";
+}
+
+
+function startFlashcard(folder) {
+    if (!data[folder] || data[folder].length === 0) {
+        alert("No hay tarjetas en esta carpeta");
+        return;
+    }
+
+    currentFolder = folder;
+    currentIndex = 0;
+
+    document.getElementById("flashcardStudyModal").style.display = "flex";
+
+    const container = document.querySelector(".flashcard-inner");
+    container.classList.remove("flipped");
+
+    showFlashcard();
+}
+
 
 function closeFolderCards() {
     document.getElementById("flashcardFolderModal").style.display = "none";
@@ -196,26 +218,6 @@ function deleteFolder(folder) {
     renderFolders();
 }
 
-// =====================================================
-// 8) MODO ESTUDIO: UNA TARJETA A LA VEZ
-// =====================================================
-function startFlashcard(folder) {
-    if (!data[folder] || data[folder].length === 0) {
-        alert("No hay tarjetas en esta carpeta");
-        return;
-    }
-
-    currentFolder = folder;
-    currentIndex = 0;
-
-    const modal = document.getElementById("flashcardModal");
-    modal.style.display = "flex";
-
-    const container = document.querySelector(".flashcard-inner");
-    container.classList.remove("flipped");
-
-    showFlashcard();
-}
 
 function closeFlashcard() {
     document.getElementById("flashcardModal").style.display = "none";

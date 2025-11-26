@@ -549,6 +549,181 @@ li {
     flex-direction: column;
     gap: 18px;
 }
+/* ============================================================
+   MODAL GENERAL PARA FLASHCARDS (ver carpetas / estudiar)
+   Estilo premium igual al modal de agregar evento y editar apunte
+   ============================================================ */
+.modal-flashcards {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(6px);
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+}
+
+/* Caja interna */
+.modal-flashcards .modal-box {
+    background: #F3EBD8;
+    width: 92%;
+    max-width: 780px;
+    max-height: 85vh;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.25);
+    animation: fadeIn 0.25s ease-out;
+    position: relative;
+    overflow-y: auto;
+}
+
+/* Caja específica del modo estudio */
+.study-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+/* Títulos */
+.modal-flashcards h2 {
+    text-align: center;
+    margin: 5px 0 20px;
+    color: #f297A0;
+    font-size: 32px;
+}
+
+/* Botón cerrar */
+.modal-flashcards .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #ff6b6b;
+    border: none;
+    color: white;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: 0.25s;
+}
+
+.modal-flashcards .close-btn:hover {
+    background: #d94343;
+}
+
+/* ============================================================
+   TARJETAS (grid dentro del modal ver carpeta)
+   ============================================================ */
+#modalCardList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 20px;
+    padding: 10px;
+}
+
+#modalCardList .card {
+    background: #fff5ea;
+    border: 2px solid #f297A0;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#modalCardList .card strong {
+    color: #8e4d5d;
+}
+
+.card-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+/* ============================================================
+   MODO ESTUDIO — flashcard con estilo premium
+   ============================================================ */
+.flashcard-inner {
+    width: 380px;
+    height: 260px;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    perspective: 1000px;
+    cursor: pointer;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+}
+
+.flashcard-inner.flipped {
+    transform: rotateY(180deg);
+}
+
+.flashcard-inner .front,
+.flashcard-inner .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 14px;
+    padding: 20px;
+    font-size: 1.4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+}
+
+.flashcard-inner .front {
+    background: #dc94b0;
+    color: white;
+}
+
+.flashcard-inner .back {
+    background: #8e65ab;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+/* ------------------------------Botones del modo estudio
+   ============================================================ */
+.study-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.study-buttons button {
+    padding: 15px 35px;
+    border-radius: 12px;
+    background: #B6BB79;
+    border: none;
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    transition: 0.25s;
+}
+
+.study-buttons button:hover {
+    background: #8d915a;
+    transform: scale(1.05);
+}
+
+.finish-btn {
+    background: #ff6b6b !important;
+}
+
+.finish-btn:hover {
+    background: #d94343 !important;
+}
 
 /*------------------------------------------------------------------------*/
 #apuntes {
@@ -1040,12 +1215,12 @@ li {
 
 /* Al pasar el mouse */
 .fc-button:hover {
-    background: #93985c ;   /* Fresa jugosa */
+    background: #93985c ;  
 }
 
 /* Botón activo (día, mes seleccionado) */
 .fc-button.fc-button-active {
-    background: #602328;   /* Fresa madura */
+    background: #602328;   
     color: white ;
 }
 .fc-col-header-cell-cushion {
@@ -1063,10 +1238,10 @@ li {
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    width: 70%;        /* Aumentado */
-    max-width: 900px;  /* Máximo más grande */
-    height: 70%;       /* Aumentado */
-    max-height: 700px; /* Máximo más grande */
+    width: 70%;       
+    max-width: 900px; 
+    height: 70%;       
+    max-height: 700px; 
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -1400,4 +1575,3 @@ li {
         padding: 10px 0;
     }
 }
-

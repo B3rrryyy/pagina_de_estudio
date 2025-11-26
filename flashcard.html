@@ -47,32 +47,39 @@
                 <script src="script.js"></script>
         </section>
 
-        <!-- 🔹 Ventana modal para ver tarjetas de una carpeta -->
-        <div id="flashcardFolderModal" class="flashcard-modal">
-            <div class="flashcard-container">
+        <!-- Modal: Ver tarjetas de una carpeta -->
+        <div id="flashcardFolderModal" class="modal-flashcards">
+            <div class="modal-box">
                 <button class="close-btn" onclick="closeFolderCards()">✖</button>
+
                 <h2 id="modalFolderTitle"></h2>
+
                 <div id="modalCardList"></div>
             </div>
         </div>
 
+
         
 
-        <!-- Modal: Estudiar flashcards (front/back) -->
-        <div id="flashcardModal" class="flashcard-modal" style="display:none;">
-            <div class="flashcard-container">
-                <button class="close-btn" onclick="closeFlashcard()">✖</button>
+        <!-- Modal: Estudiar Flashcards -->
+        <div id="flashcardStudyModal" class="modal-flashcards">
+            <div class="modal-box study-box">
+
+                <button class="close-btn" onclick="closeStudyModal()">✖</button>
 
                 <div class="flashcard-inner" onclick="flipFlashcard()">
                     <div class="front" id="flashFront"></div>
                     <div class="back" id="flashBack"></div>
                 </div>
 
-                <div class="flashcard-buttons">
+                <div class="study-buttons">
                     <button onclick="nextFlashcard()">Siguiente</button>
+                    <button class="finish-btn" onclick="closeStudyModal()">Finalizar</button>
                 </div>
+
             </div>
         </div>
+
 
         <!-- Modal: Custom Prompt (inputs personalizados) -->
         <div id="customPrompt" class="flashcard-modal" style="display:none;">
