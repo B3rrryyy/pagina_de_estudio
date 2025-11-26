@@ -1,15 +1,17 @@
-// 🔹 SISTEMA DE FLASHCARDS - versión corregida
-// Guardamos todo en localStorage 
+// =====================================================
+// SISTEMA DE FLASHCARDS COMPLETO – Versión con modales
+// =====================================================
+
+// Guardamos todo en localStorage
 let data = JSON.parse(localStorage.getItem("flashcards")) || {};
 let currentFolder = "";
 let currentIndex = 0;
 
-// Guardar en localStorage
 function saveData() {
     localStorage.setItem("flashcards", JSON.stringify(data));
 }
 
-// Crear carpeta
+// CREAR CARPETA
 function createFolder() {
     const name = document.getElementById("folderName").value.trim();
     if (!name) return alert("Ponle un nombre a la carpeta");
@@ -24,8 +26,7 @@ function createFolder() {
 
     document.getElementById("folderName").value = "";
 }
-
-// Mostrar carpetas
+// 2) MOSTRAR CARPETAS
 function renderFolders() {
     const container = document.getElementById("folders");
     container.innerHTML = "";
@@ -35,8 +36,8 @@ function renderFolders() {
         div.className = "folder";
         div.innerHTML = `
             <h3>${folderName}</h3>
-            <div class="folder-buttons">
 
+            <div class="folder-buttons">
                 <button onclick="openFolderCards('${folderName}')">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" id="New-Folder--Streamline-Core" height="14" width="14">
                         <desc>
@@ -47,18 +48,18 @@ function renderFolders() {
                         </g>
                     </svg>
                 </button>
-                
+
                 <button onclick="addCard('${folderName}')">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" id="Add-1--Streamline-Core" height="14" width="14">
-                                <desc>
-                                    Add 1 Streamline Icon: https://streamlinehq.com
-                                </desc>
-                                <g id="add-1--expand-cross-buttons-button-more-remove-plus-add-+-mathematics-math">
-                                    <path id="Union" fill="#fefcff" fill-rule="evenodd" d="M8 1c0 -0.552285 -0.44772 -1 -1 -1S6 0.447715 6 1v5H1c-0.552285 0 -1 0.44772 -1 1s0.447715 1 1 1h5v5c0 0.5523 0.44772 1 1 1s1 -0.4477 1 -1V8h5c0.5523 0 1 -0.44772 1 -1s-0.4477 -1 -1 -1H8V1Z" clip-rule="evenodd" stroke-width="1"></path>
-                                </g>
-                            </svg>
-                </button>
+                        <desc>
+                            Add 1 Streamline Icon: https://streamlinehq.com
+                        </desc>
+                        <g id="add-1--expand-cross-buttons-button-more-remove-plus-add-+-mathematics-math">
+                            <path id="Union" fill="#fefcff" fill-rule="evenodd" d="M8 1c0 -0.552285 -0.44772 -1 -1 -1S6 0.447715 6 1v5H1c-0.552285 0 -1 0.44772 -1 1s0.447715 1 1 1h5v5c0 0.5523 0.44772 1 1 1s1 -0.4477 1 -1V8h5c0.5523 0 1 -0.44772 1 -1s-0.4477 -1 -1 -1H8V1Z" clip-rule="evenodd" stroke-width="1"></path>
+                        </g>
+                    </svg>
 
+                </button>
                 <button onclick="startFlashcard('${folderName}')">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="Button-Play--Streamline-Ultimate" height="24" width="24">
                     <desc>
@@ -84,7 +85,9 @@ function renderFolders() {
     });
 }
 
-// Abrir ventana con tarjetas de una carpeta
+// =====================================================
+// 3) MODAL: VER TARJETAS DE UNA CARPETA
+// =====================================================
 function openFolderCards(folderName) {
     const cards = data[folderName];
     const modal = document.getElementById("flashcardFolderModal");
@@ -101,10 +104,30 @@ function openFolderCards(folderName) {
             const div = document.createElement("div");
             div.className = "card";
             div.innerHTML = `
-                <strong>${card.front}</strong> - ${card.back}
+                <strong>${card.front}</strong> — ${card.back}
+
                 <div class="card-buttons">
-                    <button onclick="editCard('${folderName}', ${i})">✎</button>
-                    <button onclick="deleteCard('${folderName}', ${i})">🗑️</button>
+                    <button onclick="editCard('${folderName}', ${i})">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" id="Pencil--Streamline-Core" height="14" width="14">
+                        <desc>
+                            Pencil Streamline Icon: https://streamlinehq.com
+                        </desc>
+                        <g id="pencil--change-edit-modify-pencil-write-writing">
+                            <path id="Union" fill="#fefcff" d="M10.715 -0.000976562c-0.1998 0 -0.3976 0.039922962 -0.5818 0.117424562 -0.18301 0.07702 -0.34892 0.18961 -0.48808 0.331228L1.40732 8.64549c-0.06116 0.06086 -0.10553 0.13651 -0.12879 0.21959L0.0185299 13.3651c-0.0487051 0.1739 0.0001992 0.3606 0.1279281 0.4884 0.12773 0.1277 0.314422 0.1766 0.488369 0.1279l4.500003 -1.26c0.08308 -0.0233 0.15873 -0.0677 0.21959 -0.1288l8.19768 -8.2377 0.0014 -0.00135c0.1399 -0.13917 0.251 -0.30459 0.3269 -0.48679 0.0762 -0.18278 0.1154 -0.37884 0.1154 -0.57686 0 -0.19802 -0.0392 -0.39408 -0.1154 -0.57687 -0.0759 -0.1822 -0.187 -0.34763 -0.3269 -0.48679l-0.0014 -0.00134L11.7859 0.448721c-0.1393 -0.14211 -0.3056 -0.255064 -0.4891 -0.332273 -0.1842 -0.0775016 -0.382 -0.117424562 -0.5818 -0.117424562Z" stroke-width="1"></path>
+                        </g>
+                        </svg>
+                    </button>
+                    
+                    <button onclick="deleteCard('${folderName}', ${i})">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" id="Recycle-Bin-2--Streamline-Core" height="14" width="14">
+                        <desc>
+                            Recycle Bin 2 Streamline Icon: https://streamlinehq.com
+                        </desc>
+                        <g id="recycle-bin-2--remove-delete-empty-bin-trash-garbage">
+                            <path id="Subtract" fill="#fefcff" fill-rule="evenodd" d="M5.76256 2.01256C6.09075 1.68437 6.53587 1.5 7 1.5c0.46413 0 0.90925 0.18437 1.23744 0.51256 0.20736 0.20737 0.35731 0.46141 0.43961 0.73744h-3.3541c0.0823 -0.27603 0.23225 -0.53007 0.43961 -0.73744ZM3.78868 2.75c0.10537 -0.67679 0.42285 -1.30773 0.91322 -1.798097C5.3114 0.34241 6.13805 0 7 0c0.86195 0 1.6886 0.34241 2.2981 0.951903 0.49037 0.490367 0.8079 1.121307 0.9132 1.798097H13c0.4142 0 0.75 0.33579 0.75 0.75 0 0.41422 -0.3358 0.75 -0.75 0.75h-1v8.25c0 0.3978 -0.158 0.7794 -0.4393 1.0607S10.8978 14 10.5 14h-7c-0.39783 0 -0.77936 -0.158 -1.06066 -0.4393C2.15804 13.2794 2 12.8978 2 12.5V4.25H1c-0.414214 0 -0.75 -0.33578 -0.75 -0.75 0 -0.41421 0.335786 -0.75 0.75 -0.75h2.78868ZM5 5.87646c0.34518 0 0.625 0.27983 0.625 0.625V10.503c0 0.3451 -0.27982 0.625 -0.625 0.625s-0.625 -0.2799 -0.625 -0.625V6.50146c0 -0.34517 0.27982 -0.625 0.625 -0.625Zm4.625 0.625c0 -0.34517 -0.27982 -0.625 -0.625 -0.625s-0.625 0.27983 -0.625 0.625V10.503c0 0.3451 0.27982 0.625 0.625 0.625s0.625 -0.2799 0.625 -0.625V6.50146Z" clip-rule="evenodd" stroke-width="1"></path>
+                        </g>
+                    </svg>
+                    </button>
                 </div>
             `;
             list.appendChild(div);
@@ -114,108 +137,28 @@ function openFolderCards(folderName) {
     modal.style.display = "flex";
 }
 
-// Cerrar ventana de tarjetas
 function closeFolderCards() {
     document.getElementById("flashcardFolderModal").style.display = "none";
 }
 
-// Iniciar modo flashcards (una por una)
-function startFlashcard(folder) {
-    if (!data[folder] || data[folder].length === 0) {
-        alert("No hay tarjetas en esta carpeta");
-        return;
-    }
-
-    currentFolder = folder;
-    currentIndex = 0;
-
-    let modal = document.getElementById("flashcardModal");
-    if (!modal) {
-        modal = document.createElement("div");
-        modal.id = "flashcardModal";
-        modal.className = "flashcard-modal";
-        modal.innerHTML = `
-            <div class="flashcard-container">
-                <button class="close-btn" onclick="closeFlashcard()">✖</button>
-                <div class="flashcard-inner" onclick="flipFlashcard()">
-                    <div class="front" id="flashFront"></div>
-                    <div class="back" id="flashBack"></div>
-                </div>
-                <div class="flashcard-buttons">
-                    <button onclick="closeFlashcard()">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" id="Folder-Add--Streamline-Core" height="14" width="14">
-                            <desc>
-                                Folder Add Streamline Icon: https://streamlinehq.com
-                            </desc>
-                            <g id="folder-add--add-folder-plus">
-                                <path id="Subtract" fill="#fefcff" fill-rule="evenodd" d="M5.183 0.5a1.5 1.5 0 0 1 1.492 1.14l0.215 0.86h5.61A1.5 1.5 0 0 1 14 4v8a1.5 1.5 0 0 1 -1.5 1.5h-11A1.5 1.5 0 0 1 0 12V2A1.5 1.5 0 0 1 1.5 0.5h3.683ZM7 4.75a0.75 0.75 0 0 1 0.75 0.75v1.75H9.5a0.75 0.75 0 0 1 0 1.5H7.75v1.75a0.75 0.75 0 0 1 -1.5 0V8.75H4.5a0.75 0.75 0 0 1 0 -1.5h1.75V5.5A0.75 0.75 0 0 1 7 4.75Z" clip-rule="evenodd" stroke-width="1"></path>
-                            </g>
-                        </svg>
-                    </button>
-
-                    <button onclick="nextFlashcard()">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" id="Button-Next--Streamline-Core" height="14" width="14">
-  <desc>
-    Button Next Streamline Icon: https://streamlinehq.com
-  </desc>
-  <g id="button-next--button-television-buttons-movies-skip-next-video-controls">
-    <path id="Union" fill="#fefcff" fill-rule="evenodd" d="M9.51212 6.056 1.6931 0.656892C1.29745 0.406346 0.815218 0.473133 0.466699 0.735097 0.198102 0.936989 0.00892463 1.25481 0.0000077775 1.63264V12.3333C0.000002589 12.3347 0 12.3362 0 12.3376c9.627e-7 0.884 0.978943 1.4562 1.6931 1.0039l7.81902 -5.36654c0.65048 -0.43882 0.65048 -1.48014 0 -1.91896Zm4.23778 -4.31384c0 -0.55229 -0.4477 -1.000003 -1 -1.000003 -0.5522 0 -1 0.447713 -1 1.000003V12.2578c0 0.5523 0.4478 1 1 1 0.5523 0 1 -0.4477 1 -1V1.74216Z" clip-rule="evenodd" stroke-width="1"></path>
-  </g>
-</svg>
-                    </button>
-                </div>
-            </div>
-        `;
-        document.body.appendChild(modal);
-    }
-
-    modal.style.display = "flex";
-    modal.classList.remove("flipped");
-    showFlashcard();
-}
-
-function closeFlashcard() {
-    const modal = document.getElementById("flashcardModal");
-    if (modal) modal.style.display = "none";
-}
-
-function nextFlashcard() {
-    if (!currentFolder) return;
-    currentIndex++;
-    if (currentIndex >= data[currentFolder].length) {
-        closeFlashcard();
-        return;
-    }
-    const container = document.querySelector(".flashcard-inner");
-    container.classList.remove("flipped");
-    showFlashcard();
-}
-
-function flipFlashcard() {
-    const container = document.querySelector(".flashcard-inner");
-    container.classList.toggle("flipped");
-}
-
-function showFlashcard() {
-    const card = data[currentFolder][currentIndex];
-    document.getElementById("flashFront").innerText = card.front;
-    document.getElementById("flashBack").innerText = card.back;
-}
-
-// Agregar tarjeta
+// =====================================================
+// 4) AGREGAR TARJETA (CON MODAL CUSTOM)
+// =====================================================
 function addCard(folder) {
     openCustomPrompt("Nueva Flashcard", [
         { id: "front", label: "Frente", placeholder: "Pregunta o palabra" },
         { id: "back", label: "Reverso", placeholder: "Respuesta" }
     ], values => {
         if (!values.front || !values.back) return;
+
         data[folder].push({ front: values.front, back: values.back });
         saveData();
+
         openFolderCards(folder);
     });
 }
 
-// Editar tarjeta
+// 5) EDITAR TARJETA
 function editCard(folder, index) {
     const card = data[folder][index];
 
@@ -231,86 +174,81 @@ function editCard(folder, index) {
     });
 }
 
-// Eliminar tarjeta
+// =====================================================
+// 6) ELIMINAR TARJETA
+// =====================================================
 function deleteCard(folder, index) {
-    if (confirm("¿Eliminar esta tarjeta?")) {
-        data[folder].splice(index, 1);
-        saveData();
-        openFolderCards(folder);
-    }
-}
+    if (!confirm("¿Eliminar esta tarjeta?")) return;
 
-// Eliminar carpeta
-function deleteFolder(folder) {
-    if (confirm("¿Eliminar toda la carpeta con sus tarjetas?")) {
-        delete data[folder];
-        saveData();
-        renderFolders();
-    }
-}
-
-// Administrar carpetas
-function openFolderManager() {
-    const allFolders = Object.keys(data);
-    if (allFolders.length === 0) {
-        alert("No hay carpetas para administrar");
-        return;
-    }
-
-    let modal = document.getElementById("folderManagerModal");
-    if (!modal) {
-        modal = document.createElement("div");
-        modal.id = "folderManagerModal";
-        modal.className = "flashcard-modal";
-        modal.innerHTML = `
-            <div class="folder-manager-container">
-                <button class="close-folder-btn" onclick="closeFolderManager()">✖</button>
-                <h2>📁 Administrar carpetas</h2>
-                <ul id="folderList"></ul>
-            </div>
-        `;
-        document.body.appendChild(modal);
-    }
-
-    modal.style.display = "flex";
-    const folderList = modal.querySelector("#folderList");
-    folderList.innerHTML = "";
-
-    allFolders.forEach(folder => {
-        const li = document.createElement("li");
-        li.innerHTML = `
-            <span>${folder}</span>
-            <div>
-                <button onclick="renameFolder('${folder}')">✎
-
-                </button>
-                <button onclick="deleteFolder('${folder}')">🗑️
-                
-                </button>
-            </div>
-        `;
-        folderList.appendChild(li);
-    });
-}
-
-function closeFolderManager() {
-    document.getElementById("folderManagerModal").style.display = "none";
-}
-
-function renameFolder(oldName) {
-    const newName = prompt("Nuevo nombre para la carpeta:", oldName);
-    if (!newName || newName === oldName) return;
-    if (data[newName]) return alert("Ya existe una carpeta con ese nombre");
-
-    data[newName] = data[oldName];
-    delete data[oldName];
+    data[folder].splice(index, 1);
     saveData();
-    renderFolders();
-    openFolderManager();
+    openFolderCards(folder);
 }
 
 // =====================================================
-// 🔹 Modal personalizado reutilizable (para inputs)
+// 7) ELIMINAR CARPETA
+// =====================================================
+function deleteFolder(folder) {
+    if (!confirm("¿Eliminar toda la carpeta y sus tarjetas?")) return;
+
+    delete data[folder];
+    saveData();
+    renderFolders();
+}
+
+// =====================================================
+// 8) MODO ESTUDIO: UNA TARJETA A LA VEZ
+// =====================================================
+function startFlashcard(folder) {
+    if (!data[folder] || data[folder].length === 0) {
+        alert("No hay tarjetas en esta carpeta");
+        return;
+    }
+
+    currentFolder = folder;
+    currentIndex = 0;
+
+    const modal = document.getElementById("flashcardModal");
+    modal.style.display = "flex";
+
+    const container = document.querySelector(".flashcard-inner");
+    container.classList.remove("flipped");
+
+    showFlashcard();
+}
+
+function closeFlashcard() {
+    document.getElementById("flashcardModal").style.display = "none";
+}
+
+function nextFlashcard() {
+    currentIndex++;
+
+    if (currentIndex >= data[currentFolder].length) {
+        alert("Terminaste todas las tarjetas");
+        closeFlashcard();
+        return;
+    }
+
+    const container = document.querySelector(".flashcard-inner");
+    container.classList.remove("flipped");
+
+    showFlashcard();
+}
+
+function flipFlashcard() {
+    const container = document.querySelector(".flashcard-inner");
+    container.classList.toggle("flipped");
+}
+
+function showFlashcard() {
+    const card = data[currentFolder][currentIndex];
+    document.getElementById("flashFront").textContent = card.front;
+    document.getElementById("flashBack").textContent = card.back;
+}
+
+// =====================================================
+// 9) CUSTOM PROMPT PARA INPUTS BONITOS
 // =====================================================
 let promptCallback = null;
 
@@ -325,18 +263,20 @@ function openCustomPrompt(title, fields, callback) {
     fields.forEach(f => {
         const label = document.createElement("label");
         label.textContent = f.label;
+
         const input = document.createElement("input");
         input.type = "text";
         input.id = f.id;
         input.placeholder = f.placeholder || "";
         input.value = f.value || "";
         input.className = "prompt-input";
+
         fieldsContainer.appendChild(label);
         fieldsContainer.appendChild(input);
     });
 
-    modal.style.display = "flex";
     promptCallback = callback;
+    modal.style.display = "flex";
 }
 
 function closeCustomPrompt() {
@@ -347,13 +287,19 @@ function closeCustomPrompt() {
 function confirmCustomPrompt() {
     const inputs = document.querySelectorAll("#promptFields input");
     const values = {};
+
     inputs.forEach(i => values[i.id] = i.value.trim());
-    if (promptCallback) promptCallback(values);
+
+    if (promptCallback) {
+        promptCallback(values);
+    }
+
     closeCustomPrompt();
 }
 
-
-//--------------------cargar -------------------
-window.onload = function() {
-    renderFolders(); // Mostrar carpetas
+// =====================================================
+// 10) AL CARGAR LA PÁGINA
+// =====================================================
+window.onload = () => {
+    renderFolders();
 };

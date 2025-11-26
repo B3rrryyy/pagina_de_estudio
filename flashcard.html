@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>Flashcards</title>
         <link rel="stylesheet" type="text/css" href="style.css">
-        <script src="flashcards.js" defer></script>
+        <script src="script.js" defer></script>
     </head>
     <body>
         <header>
@@ -19,6 +19,7 @@
             <div  class="flashcards-controls">
                 <input type="text" id="folderName" placeholder="Nombre de la carpeta">
                 <div class="button-row">
+
                     <button onclick="createFolder()">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" id="Folder-Add--Streamline-Core" height="14" width="14">
                             <desc>
@@ -29,6 +30,7 @@
                             </g>
                         </svg>
                     </button>
+
                     <button onclick="openFolderManager()">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" id="Pencil--Streamline-Core" height="14" width="14">
                         <desc>
@@ -53,5 +55,38 @@
                 <div id="modalCardList"></div>
             </div>
         </div>
+
+        
+
+        <!-- Modal: Estudiar flashcards (front/back) -->
+        <div id="flashcardModal" class="flashcard-modal" style="display:none;">
+            <div class="flashcard-container">
+                <button class="close-btn" onclick="closeFlashcard()">✖</button>
+
+                <div class="flashcard-inner" onclick="flipFlashcard()">
+                    <div class="front" id="flashFront"></div>
+                    <div class="back" id="flashBack"></div>
+                </div>
+
+                <div class="flashcard-buttons">
+                    <button onclick="nextFlashcard()">Siguiente</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal: Custom Prompt (inputs personalizados) -->
+        <div id="customPrompt" class="flashcard-modal" style="display:none;">
+            <div class="folder-card-container">
+                <h2 id="promptTitle"></h2>
+
+                <div id="promptFields"></div>
+
+                <div class="flashcard-buttons">
+                    <button onclick="confirmCustomPrompt()">Aceptar</button>
+                    <button onclick="closeCustomPrompt()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
     </body>
 </html>
