@@ -17,9 +17,17 @@
         <section id="apuntes">
             <h2>Apuntes</h2>    
             <div class="form">
-                <input type="text" id="subjectInput" placeholder="Materia">
-                <input type="text" id="titleInput" placeholder="Título del apunte">                    <textarea id="noteInput" placeholder="Escribe tu apunte aquí..."></textarea>
-                <button onclick="addNote()">Agregar</button>
+                <button onclick="openAddNoteModal()">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" id="Add-1--Streamline-Core" height="20" width="20">
+                        <desc>
+                            Add 1 Streamline Icon: https://streamlinehq.com
+                        </desc>
+                        <g id="add-1--expand-cross-buttons-button-more-remove-plus-add-+-mathematics-math">
+                            <path id="Union" fill="#fefcff" fill-rule="evenodd" d="M8 1c0 -0.552285 -0.44772 -1 -1 -1S6 0.447715 6 1v5H1c-0.552285 0 -1 0.44772 -1 1s0.447715 1 1 1h5v5c0 0.5523 0.44772 1 1 1s1 -0.4477 1 -1V8h5c0.5523 0 1 -0.44772 1 -1s-0.4477 -1 -1 -1H8V1Z" clip-rule="evenodd" stroke-width="1"></path>
+                        </g>
+                    </svg>
+                </button>
+
             </div>
 
             <div id="notesList"></div>
@@ -59,6 +67,25 @@
             </div>
         </div>
 
+        <!-- Modal para agregar apunte -->
+        <div id="addNoteModal" class="flashcard-modal">
+            <div class="note-modal-container">
+                <button class="close-btn" onclick="closeAddNoteModal()">✖</button>
+                
+                <h2>Nuevo Apunte</h2>
+
+                <label>Materia</label>
+                <input type="text" id="modalSubjectInput" class="prompt-input">
+
+                <label>Título</label>
+                <input type="text" id="modalTitleInput" class="prompt-input">
+
+                <label>Contenido</label>
+                <textarea id="modalContentInput" class="autosize-textarea"></textarea>
+
+                <button onclick="saveNoteFromModal()">Guardar</button>
+            </div>
+        </div>
 
         <!-- Modal personalizado para editar -->
         <div id="customPrompt" class="flashcard-modal">

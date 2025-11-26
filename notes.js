@@ -83,6 +83,41 @@ function openNoteModal(index) {
 
     document.getElementById("noteModal").style.display = "flex";
 }
+// Textarea autoexpansivo
+document.addEventListener("input", function(e) {
+    if (e.target.classList.contains("autosize-textarea")) {
+        e.target.style.height = "auto";
+        e.target.style.height = (e.target.scrollHeight) + "px";
+    }
+});
+function openAddNoteModal() {
+    document.getElementById("addNoteModal").style.display = "flex";
+}
+
+function closeAddNoteModal() {
+    document.getElementById("addNoteModal").style.display = "none";
+}
+
+function saveNoteFromModal() {
+    const subject = document.getElementById("modalSubjectInput").value.trim();
+    const title = document.getElementById("modalTitleInput").value.trim();
+    const content = document.getElementById("modalContentInput").value.trim();
+
+    if (!subject || !title || !content) {
+        alert("Completa todos los campos");
+        return;
+    }
+
+    notes.push({ subject, title, content });
+    saveNotes();
+    renderNotes();
+    closeAddNoteModal();
+
+    // Limpiar campos
+    document.getElementById("modalSubjectInput").value = "";
+    document.getElementById("modalTitleInput").value = "";
+    document.getElementById("modalContentInput").value = "";
+}
 
 
 // 🔴 Cerrar modal
